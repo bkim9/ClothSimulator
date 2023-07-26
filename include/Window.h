@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Camera.h"
-
 #include "Shader.h"
-#include "core.h"
 #include "Cloth.h"
 
 class Window {

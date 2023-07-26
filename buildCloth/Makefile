@@ -60,7 +60,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator
+CMAKE_BINARY_DIR = /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/CMakeFiles /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -297,6 +297,30 @@ src/Window.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cloth.dir/build.make CMakeFiles/Cloth.dir/src/Window.cpp.s
 .PHONY : src/Window.cpp.s
 
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cloth.dir/build.make CMakeFiles/Cloth.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cloth.dir/build.make CMakeFiles/Cloth.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Cloth.dir/build.make CMakeFiles/Cloth.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -327,6 +351,9 @@ help:
 	@echo "... src/Window.o"
 	@echo "... src/Window.i"
 	@echo "... src/Window.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 
