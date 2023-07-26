@@ -23,7 +23,7 @@ GLuint Window::shaderProgram;
 // Constructors and desctructors
 bool Window::initializeProgram() {
     // Create a shader program with a vertex shader and a fragment shader.
-    shaderProgram = LoadShaders("shaders/shader.vert", "shaders/shader.frag");
+    shaderProgram = LoadShaders("../shaders/shader.vert", "../shaders/shader.frag");
     // Check the shader program.
     if (!shaderProgram) {
         std::cerr << "Failed to initialize shader program" << std::endl;
@@ -87,8 +87,10 @@ GLFWwindow* Window::createWindow(int width, int height) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
+    // GLFWmonitor* primaryMonitor = NULL; 
+    GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor(); // switch comment not full screen
     // Create the GLFW window.
-    GLFWwindow* window = glfwCreateWindow(width, height, windowTitle, NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(width, height, windowTitle, primaryMonitor, NULL);
 
     // Check if the window could not be created.
     if (!window) {

@@ -6,6 +6,9 @@ Triangle::Triangle(Particle* particle0, Particle* particle1, Particle* particle2
     parts.push_back(particle2);
     getN();
     model = glm::mat4(1.0f);
+    indices.push_back(0);
+    indices.push_back(1);
+    indices.push_back(2);
 }
 
 void Triangle::predraw(){
@@ -17,7 +20,6 @@ void Triangle::predraw(){
     normals.push_back(parts[1]->Normal);
     normals.push_back(parts[2]->Normal);
 
-    indices = {0,1,2};
 
     // The color of the triangle
     color = glm::vec3(.2f, 0.5f, 0.5f);

@@ -1,4 +1,4 @@
-#include "core.h"
+
 #include "Particle.h"
 #include "Air.h"
 class Triangle {

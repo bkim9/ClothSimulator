@@ -258,6 +258,4 @@ void Cloth::Update(int movedirection, Air* air) {
             } 
         }
     }
-
-    // Display/ store/ analyze results
 }
