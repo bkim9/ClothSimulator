@@ -17,7 +17,9 @@ class Triangle {
         ~Triangle();
         std::vector<Particle*> parts;
         glm::vec3 normal;
+        float area;
         void predraw();
+        void getN();
         void draw(const glm::mat4& viewProjMtx, GLuint shader);
         void Aero(Air* air);
 };

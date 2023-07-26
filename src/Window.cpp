@@ -3,7 +3,7 @@
 // Window Properties
 int Window::width;
 int Window::height;
-const char* Window::windowTitle = "Cloth PA4";
+const char* Window::windowTitle = "Cloth Simulator";
 
 // Objects to render
 Cloth* Window::cloth;
@@ -183,11 +183,11 @@ void Window::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
             case GLFW_KEY_R:
                 resetCamera();
                 break;
-            case '=': 
+            case '=': // zoom in
                 Cam->SetDistance(Cam->GetDistance() * 0.9f);
                 Cam->Update();
                 break;
-            case '-':
+            case '-': // zoom out
                 Cam->SetDistance(Cam->GetDistance() * 1.1f);
                 Cam->Update();
                 break;            
@@ -199,10 +199,10 @@ void Window::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
             case GLFW_KEY_D:
                 cloth->Update(key, air);
                 break;
-            case GLFW_KEY_F:
+            case GLFW_KEY_F: // faster
                 air->wind.x++;
                 break;
-            case GLFW_KEY_S:
+            case GLFW_KEY_S: // slower
                 air->wind.x--;
                 break;
             default:

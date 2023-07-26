@@ -28,7 +28,7 @@ void setup_opengl_settings() {
     // Set polygon drawing mode to fill front and back of each polygon.
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     // Set clear color to black.
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(1.0, 1.0, 0.5, 0.0);
 }
 
 void print_versions() {
@@ -64,10 +64,10 @@ int main(int argc, char* argv[]) {
 
     // Loop while GLFW window should stay open.
     while (!glfwWindowShouldClose(window)) {
-        // Main render display callback. Rendering of objects is done here.
+        // Main render display callback. Rendering of objects.
         Window::displayCallback(window,argc, argv);
         
-        // Idle callback. Updating objects, etc. can be done here.
+        // Idle callback. Updating objects, etc.
         Window::idleCallback();
     }
 

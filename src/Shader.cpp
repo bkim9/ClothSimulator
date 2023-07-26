@@ -73,7 +73,7 @@ GLuint LoadShaders(const char* vertexFilePath, const char* fragmentFilePath) {
     GLuint programID = glCreateProgram();
     glAttachShader(programID, vertexShaderID);
     glAttachShader(programID, fragmentShaderID);
-    glLinkProgram(programID);
+    glLinkProgram (programID);
 
     // Check the program.
     glGetProgramiv(programID, GL_LINK_STATUS, &Result);

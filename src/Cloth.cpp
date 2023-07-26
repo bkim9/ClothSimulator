@@ -134,14 +134,17 @@ void Cloth::Load(int h, int w, float particleDistance, float stiffness, float da
 
     // Particle normals
     for (auto it : trianglemap) {
-        glm::vec3 subnortal(0);
+        glm::vec3 subnormal(0);
         // it.first
         for (auto jt : it.second) {
             for(auto kt: jt.second) {
-                subnortal += kt.second->normal;
+                if (glm::dot( glm::vec3(1,0,0), kt.second->normal) < 0) kt.second->normal = -kt.second->normal;
+                subnormal += kt.second->normal;
             }
         }
-        it.first->Normal = glm::normalize(subnortal);// / it.second.size();
+        // if (glm::dot( glm::vec3(1,0,0), subnormal) < 0) subnormal = -subnormal;
+        it.first->Normal = glm::normalize(subnormal);// / it.second.size();
+        
     }
 
     // Triangle predraw
@@ -232,16 +235,17 @@ void Cloth::Update(int movedirection, Air* air) {
     }
 
     // Update normals
-        // Particle normals
+    // Particle normals
     for (auto it : trianglemap) {
-        glm::vec3 subnortal(0);
+        glm::vec3 subnormal(0);
         // it.first
         for (auto jt : it.second) {
             for(auto kt: jt.second) {
-                subnortal += kt.second->normal;
+                subnormal += kt.second->normal;
+                kt.second->getN();
             }
         }
-        it.first->Normal = glm::normalize(subnortal);// / it.second.size();
+        it.first->Normal = glm::normalize(subnormal);// / it.second.size();
     }
 
     // collision handling with y = -2 plane
