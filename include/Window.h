@@ -4,12 +4,17 @@
 #include "Shader.h"
 #include "Cloth.h"
 
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 class Window {
 public:
     // Window Properties
     static int width;
     static int height;
     static const char* windowTitle;
+    static bool toggle;
+    // static ImVec4 clear_color;
     static Air* air;
 
     // Objects to render

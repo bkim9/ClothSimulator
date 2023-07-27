@@ -1,3 +1,0 @@
-/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/build/CMakeFiles/Cloth.dir
-/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/build/CMakeFiles/edit_cache.dir
-/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/build/CMakeFiles/rebuild_cache.dir

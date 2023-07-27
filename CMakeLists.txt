@@ -1,24 +1,28 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.8)
 
 project(Cloth)
 
-set(PROJECT_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
-set(PROJECT_SHADER_DIR ${CMAKE_SOURCE_DIR}/shaders)
+add_subdirectory(imgui)
 
 # Add source files
 file(GLOB_RECURSE SOURCE_FILES_ 
 	${CMAKE_SOURCE_DIR}/src/*.cpp)
 
-# Add header files
-file(GLOB_RECURSE HEADER_FILES_
-	${CMAKE_SOURCE_DIR}/include/*.h)
+add_library(cloth_lib STATIC ${SOURCE_FILES_})
+target_include_directories(cloth_lib PUBLIC include shaders)
+target_link_libraries(cloth_lib imgui)
 
-# OpenGL
-find_package(OpenGL REQUIRED)
-find_package(glfw3 3.2 REQUIRED)
-FIND_LiBRARY(OpenGL_LIBRARY OpenGL)
+add_executable(${PROJECT_NAME} main.cpp)
+target_include_directories(${PROJECT_NAME} PUBLIC include)
+target_link_libraries(${PROJECT_NAME} cloth_lib)
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)
 
-
-add_executable(${PROJECT_NAME} ${SOURCE_FILES_} ${HEADER_FILES_})
-include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_INCLUDE_DIR} ${PROJECT_SHADER_DIR})
-target_link_libraries(${PROJECT_NAME} glfw ${OpenGL_LIBRARY})
+# gtest
+include(FetchContent)
+FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+FetchContent_MakeAvailable(googletest)
+enable_testing()
+include(GoogleTest)

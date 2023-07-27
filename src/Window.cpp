@@ -4,6 +4,7 @@
 int Window::width;
 int Window::height;
 const char* Window::windowTitle = "Cloth Simulator";
+bool Window::toggle = true;
 
 // Objects to render
 Cloth* Window::cloth;
@@ -65,6 +66,12 @@ void Window::cleanUp() {
 
     // Delete the shader program.
     glDeleteProgram(shaderProgram);
+
+    // Cleanup
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+    glfwTerminate();
 }
 
 // for the Window
@@ -75,6 +82,7 @@ GLFWwindow* Window::createWindow(int width, int height) {
         return NULL;
     }
 
+    const char* glsl_version = "#version 150";
     // 4x antialiasing.
     glfwWindowHint(GLFW_SAMPLES, 4);
 
@@ -87,8 +95,8 @@ GLFWwindow* Window::createWindow(int width, int height) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-    // GLFWmonitor* primaryMonitor = NULL; 
-    GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor(); // switch comment not full screen
+    GLFWmonitor* primaryMonitor = NULL; 
+    // GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor(); // switch comment not full screen
     // Create the GLFW window.
     GLFWwindow* window = glfwCreateWindow(width, height, windowTitle, primaryMonitor, NULL);
 
@@ -116,6 +124,22 @@ GLFWwindow* Window::createWindow(int width, int height) {
 
     // Call the resize callback to make sure things get drawn immediately.
     Window::resizeCallback(window, width, height);
+
+    // Setup Dear ImGui context
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+    // Setup Dear ImGui style
+    ImGui::StyleColorsDark();
+    // ImGui::StyleColorsLight();
+
+    // Setup Platform/Renderer backends
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init(glsl_version);
+
     return window;
 }
 
@@ -135,8 +159,8 @@ void Window::resizeCallback(GLFWwindow* window, int width, int height) {
 // update and draw functions
 void Window::idleCallback() {
     // Perform any updates as necessary.
-        Cam->Update();
-        cloth->Draw(glm::mat4(1.0f),3);
+    Cam->Update();
+    cloth->Draw(glm::mat4(1.0f),3);
 }
 
 void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
@@ -146,16 +170,43 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
     // Gets events, including input such as keyboard and mouse or window resizing.
     glfwPollEvents();
 
-    // Our state
-    bool show_demo_window = true;
+    // Start the Dear ImGui frame
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
 
+    static float clear_color[4] = { 1.0f,1.0f,1.0f,1.0f };
+    // show custom window 
+    ImGui::Begin("Test #1635");
+    {
+        static float windV = 0.0f;
+        int show = 1;
+        ImGui::Text(u8"Hello, world! ");
+        ImGui::SliderFloat("windvelocity", &windV, -5.f, 5.f);
+        air->wind = glm::vec3(windV,0,0);
+        ImGui::ColorEdit3("clear color", clear_color);
+        if (ImGui::Button("Test Window")) show ^= 1;
+        if (ImGui::Button("Another Window")) show ^= 1;
+        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+    }
+    ImVec2 v = ImGui::GetWindowSize();  // v = {32, 48} ,   is tool small
+    ImGui::Text("%f %f", v.x, v.y);
+    if (ImGui::GetFrameCount() < 10)
+        printf("Frame %d: Size %f %f\n", ImGui::GetFrameCount(), v.x, v.y);
+    ImGui::End();
+
+    // Rendering
+    ImGui::Render();
     int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
     glViewport(0, 0, display_w, display_h);
+    glClearColor(clear_color[0] * clear_color[3], clear_color[1] * clear_color[3], clear_color[2] * clear_color[3], clear_color[3]);
     glClear(GL_COLOR_BUFFER_BIT);
+
+
     cloth->Update(0, air);
     cloth->Draw(Cam->GetViewProjectMtx(), Window::shaderProgram);
-
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     // Swap buffers.
     glfwSwapBuffers(window);
