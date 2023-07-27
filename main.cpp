@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
     // Initialize the shader program; exit if initialization fails.
     if (!Window::initializeProgram()) exit(EXIT_FAILURE);
     // Initialize objects/pointers for rendering; exit if initialization fails.
-    if (!Window::initializeObjects(argc, argv)) exit(EXIT_FAILURE);
+    if (!Window::initializeObjects()) exit(EXIT_FAILURE);
 
     // Loop while GLFW window should stay open.
     while (!glfwWindowShouldClose(window)) {
@@ -58,7 +58,6 @@ int main(int argc, char* argv[]) {
         // Idle callback. Updating objects, etc.
         Window::idleCallback();
     }
-
     
     Window::cleanUp();
     // Destroy the window.

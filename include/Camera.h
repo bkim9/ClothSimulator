@@ -6,6 +6,7 @@
 
 #include "core.h"
 #include "glm/gtx/euler_angles.hpp"
+#include "imGuIZMOquat.h"
 
 // The Camera class provides a simple means to controlling the 3D camera. It could
 // be extended to support more interactive controls. Ultimately. the camera sets the
@@ -23,10 +24,15 @@ public:
     void SetDistance(float d) { Distance = d; }
     void SetAzimuth(float a) { Azimuth = a; }
     void SetIncline(float i) { Incline = i; }
-
+    quat SetRotation(){
+        ViewProjectMtx;
+    }
     float GetDistance() { return Distance; }
     float GetAzimuth() { return Azimuth; }
     float GetIncline() { return Incline; }
+    quat GetRotation(){
+        ViewProjectMtx;
+    }
 
     const glm::mat4 &GetViewProjectMtx() { return ViewProjectMtx; }
 

@@ -1301,10 +1301,16 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stdbool.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stdint.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imGuIZMOquat.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imconfig.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imgui.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imgui_impl_glfw.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imgui_impl_opengl3.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imgui_internal.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imstb_textedit.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/vGizmo.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/vgConfig.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/vgMath.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Air.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Camera.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Cloth.h \
@@ -1730,8 +1736,6 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
 
 /opt/homebrew/include/glm/detail/qualifier.hpp:
 
-/opt/homebrew/include/GLFW/glfw3.h:
-
 /opt/homebrew/include/glm/mat3x2.hpp:
 
 /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/main.h:
@@ -1741,6 +1745,10 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
 /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Shader.h:
 
 /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Cloth.h:
+
+/opt/homebrew/include/GLFW/glfw3.h:
+
+/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/vgConfig.h:
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stddef.h:
 
@@ -2746,6 +2754,8 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__concepts/invocable.h:
 
+/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imgui_internal.h:
+
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__chrono/hh_mm_ss.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int64_t.h:
@@ -2947,6 +2957,8 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
 /opt/homebrew/include/glm/detail/compute_vector_relational.hpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/ranges_remove_copy.h:
+
+/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imstb_textedit.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/dispatch/group.h:
 
@@ -3379,6 +3391,8 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Headers/LaunchServices.h:
 
 /opt/homebrew/include/glm/exponential.hpp:
+
+/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/vGizmo.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__chrono/high_resolution_clock.h:
 
@@ -4008,6 +4022,8 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/_stdio.h:
 
+/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/vgMath.h:
+
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/is_permutation.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/CoreServices.framework/Frameworks/AE.framework/Headers/AEMach.h:
@@ -4497,6 +4513,8 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_seek_set.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/replace_copy_if.h:
+
+/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imGuIZMOquat.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__utility/declval.h:
 

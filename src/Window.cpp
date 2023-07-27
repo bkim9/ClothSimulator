@@ -9,7 +9,8 @@ bool Window::toggle = true;
 // Objects to render
 Cloth* Window::cloth;
 Air* Window::air;
-
+float Window::fluidDensity = 1.225f;
+float Window::dragCoefficient = 1.28f;
 
 // Camera Properties
 Camera* Cam;
@@ -34,7 +35,7 @@ bool Window::initializeProgram() {
 }
 
 
-bool Window::initializeObjects(int argc, char* argv[]) {
+bool Window::initializeObjects() {
 
     cloth  = new Cloth;
     int h, w;
@@ -52,8 +53,6 @@ bool Window::initializeObjects(int argc, char* argv[]) {
     //  h   o   o   o   o   o
     cloth->Load(h,w,d,k,damp);
 
-    float fluidDensity = 1.225f;
-    float dragCoefficient = 1.28f;
     glm::vec3 wind(0.0f,0.0f,0.0f);
     air = new Air(fluidDensity,dragCoefficient,wind);
 
@@ -175,24 +174,69 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    static float clear_color[4] = { 1.0f,1.0f,1.0f,1.0f };
-    // show custom window 
-    ImGui::Begin("Test #1635");
+    static float clear_color[4] = { .839f,.961f,.784f, 1.0f };
+
+    ImGui::Begin("color and air");
     {
-        static float windV = 0.0f;
+        static float windspeed = 0.0f;
+        static glm::vec3 windDir(1,0,0);
+        static vec4 dir;
+        quat qRot = quat(1.f, 0.f, 0.f, 0.f);
+
         int show = 1;
         ImGui::Text(u8"Hello, world! ");
-        ImGui::SliderFloat("windvelocity", &windV, -5.f, 5.f);
-        air->wind = glm::vec3(windV,0,0);
+
         ImGui::ColorEdit3("clear color", clear_color);
-        if (ImGui::Button("Test Window")) show ^= 1;
-        if (ImGui::Button("Another Window")) show ^= 1;
+
+        // wind
+        ImGui::SliderFloat("wind speed", &windspeed, -10.f, 10.f);
+        vec3 light(windDir.x,windDir.y,windDir.z);
+        ImGui::gizmo3D("##winddirection", light, 200, imguiGizmo::modeDirection);
+        ImGui::Text(u8"wind direction");
+        windDir = glm::normalize(glm::vec3(light.x,light.y,light.z));
+        air->wind = windspeed * windDir;        
+        ImGui::SliderFloat("fluid density", &fluidDensity, 0.f, 10.f);
+        ImGui::SliderFloat("drag coefficient", &dragCoefficient, 0.f, 10.f);
+        air->density = fluidDensity;
+        air->dragcoef= dragCoefficient;
+
+
+        // reset
+        if (ImGui::Button("Reset")) {
+            resetCamera();
+            initializeObjects();
+        }
+
+        // if (ImGui::Button("Another Window")) show ^= 1;
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-    }
-    ImVec2 v = ImGui::GetWindowSize();  // v = {32, 48} ,   is tool small
-    ImGui::Text("%f %f", v.x, v.y);
-    if (ImGui::GetFrameCount() < 10)
+    
+        ImVec2 v = ImGui::GetWindowSize();  // v = {32, 48} ,   is tool small
+        ImGui::Text("%f %f", v.x, v.y);
+        if (ImGui::GetFrameCount() < 10)
         printf("Frame %d: Size %f %f\n", ImGui::GetFrameCount(), v.x, v.y);
+    }
+    ImGui::End();
+
+    ImGui::Begin("Camera Control");
+    {
+        // camera zoom in out
+        if (ImGui::Button("+"))  Cam->SetDistance(Cam->GetDistance() * .9f) ;
+        if (ImGui::Button("-")) Cam->SetDistance(Cam->GetDistance() / .9f) ;
+
+
+        static quat qt = quat(1.f, 0.f, 0.f, 0.f);//Cam->GetRotation();
+        static vec3 pos = vec3(Cam->GetDistance(),0,0);// Cam->GetPosition(); ******
+        if(ImGui::gizmo3D("##gizmo1", pos, qt,100, imguiGizmo::mode3Axes|imguiGizmo::cubeAtOrigin)) {  
+            // SetRotation(qt); SetPosition(pos); 
+        }
+        // or explicitly
+        // static quat q(1.f, 0.f, 0.f, 0.f);
+        // static vec3 pos(0.f);
+        // ImGui::gizmo3D("##Dir1", pos, q, 100, imguiGizmo::mode3Axes|guiGizmo::cubeAtOrigin);
+
+    // Default size: ImGui::GetFrameHeightWithSpacing()*4
+    // Default mode: guiGizmo::mode3Axes|guiGizmo::cubeAtOrigin -> 3 Axes with cube @ origin
+    }
     ImGui::End();
 
     // Rendering

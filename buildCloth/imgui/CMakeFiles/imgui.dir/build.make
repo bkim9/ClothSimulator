@@ -69,10 +69,24 @@ include imgui/CMakeFiles/imgui.dir/progress.make
 # Include the compile flags for this target's objects.
 include imgui/CMakeFiles/imgui.dir/flags.make
 
+imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o: imgui/CMakeFiles/imgui.dir/flags.make
+imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imGuIZMOquat.cpp
+imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o: imgui/CMakeFiles/imgui.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o"
+	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o -MF CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o.d -o CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o -c /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imGuIZMOquat.cpp
+
+imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.i"
+	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imGuIZMOquat.cpp > CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.i
+
+imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.s"
+	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imGuIZMOquat.cpp -o CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.s
+
 imgui/CMakeFiles/imgui.dir/src/imgui.cpp.o: imgui/CMakeFiles/imgui.dir/flags.make
 imgui/CMakeFiles/imgui.dir/src/imgui.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui.cpp
 imgui/CMakeFiles/imgui.dir/src/imgui.cpp.o: imgui/CMakeFiles/imgui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui.cpp.o"
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT imgui/CMakeFiles/imgui.dir/src/imgui.cpp.o -MF CMakeFiles/imgui.dir/src/imgui.cpp.o.d -o CMakeFiles/imgui.dir/src/imgui.cpp.o -c /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui.cpp
 
 imgui/CMakeFiles/imgui.dir/src/imgui.cpp.i: cmake_force
@@ -86,7 +100,7 @@ imgui/CMakeFiles/imgui.dir/src/imgui.cpp.s: cmake_force
 imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.o: imgui/CMakeFiles/imgui.dir/flags.make
 imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_demo.cpp
 imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.o: imgui/CMakeFiles/imgui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.o"
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.o -MF CMakeFiles/imgui.dir/src/imgui_demo.cpp.o.d -o CMakeFiles/imgui.dir/src/imgui_demo.cpp.o -c /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_demo.cpp
 
 imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.i: cmake_force
@@ -100,7 +114,7 @@ imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.s: cmake_force
 imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.o: imgui/CMakeFiles/imgui.dir/flags.make
 imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_draw.cpp
 imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.o: imgui/CMakeFiles/imgui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.o"
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.o -MF CMakeFiles/imgui.dir/src/imgui_draw.cpp.o.d -o CMakeFiles/imgui.dir/src/imgui_draw.cpp.o -c /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_draw.cpp
 
 imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.i: cmake_force
@@ -114,7 +128,7 @@ imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.s: cmake_force
 imgui/CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.o: imgui/CMakeFiles/imgui.dir/flags.make
 imgui/CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_impl_glfw.cpp
 imgui/CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.o: imgui/CMakeFiles/imgui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.o"
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT imgui/CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.o -MF CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.o.d -o CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.o -c /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_impl_glfw.cpp
 
 imgui/CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.i: cmake_force
@@ -128,7 +142,7 @@ imgui/CMakeFiles/imgui.dir/src/imgui_impl_glfw.cpp.s: cmake_force
 imgui/CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.o: imgui/CMakeFiles/imgui.dir/flags.make
 imgui/CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_impl_opengl3.cpp
 imgui/CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.o: imgui/CMakeFiles/imgui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.o"
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT imgui/CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.o -MF CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.o.d -o CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.o -c /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_impl_opengl3.cpp
 
 imgui/CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.i: cmake_force
@@ -142,7 +156,7 @@ imgui/CMakeFiles/imgui.dir/src/imgui_impl_opengl3.cpp.s: cmake_force
 imgui/CMakeFiles/imgui.dir/src/imgui_tables.cpp.o: imgui/CMakeFiles/imgui.dir/flags.make
 imgui/CMakeFiles/imgui.dir/src/imgui_tables.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_tables.cpp
 imgui/CMakeFiles/imgui.dir/src/imgui_tables.cpp.o: imgui/CMakeFiles/imgui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_tables.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_tables.cpp.o"
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT imgui/CMakeFiles/imgui.dir/src/imgui_tables.cpp.o -MF CMakeFiles/imgui.dir/src/imgui_tables.cpp.o.d -o CMakeFiles/imgui.dir/src/imgui_tables.cpp.o -c /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_tables.cpp
 
 imgui/CMakeFiles/imgui.dir/src/imgui_tables.cpp.i: cmake_force
@@ -156,7 +170,7 @@ imgui/CMakeFiles/imgui.dir/src/imgui_tables.cpp.s: cmake_force
 imgui/CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o: imgui/CMakeFiles/imgui.dir/flags.make
 imgui/CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_widgets.cpp
 imgui/CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o: imgui/CMakeFiles/imgui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object imgui/CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o"
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT imgui/CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o -MF CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o.d -o CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o -c /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_widgets.cpp
 
 imgui/CMakeFiles/imgui.dir/src/imgui_widgets.cpp.i: cmake_force
@@ -169,6 +183,7 @@ imgui/CMakeFiles/imgui.dir/src/imgui_widgets.cpp.s: cmake_force
 
 # Object files for target imgui
 imgui_OBJECTS = \
+"CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o" \
 "CMakeFiles/imgui.dir/src/imgui.cpp.o" \
 "CMakeFiles/imgui.dir/src/imgui_demo.cpp.o" \
 "CMakeFiles/imgui.dir/src/imgui_draw.cpp.o" \
@@ -180,6 +195,7 @@ imgui_OBJECTS = \
 # External object files for target imgui
 imgui_EXTERNAL_OBJECTS =
 
+imgui/libimgui.a: imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o
 imgui/libimgui.a: imgui/CMakeFiles/imgui.dir/src/imgui.cpp.o
 imgui/libimgui.a: imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.o
 imgui/libimgui.a: imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.o
@@ -189,7 +205,7 @@ imgui/libimgui.a: imgui/CMakeFiles/imgui.dir/src/imgui_tables.cpp.o
 imgui/libimgui.a: imgui/CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o
 imgui/libimgui.a: imgui/CMakeFiles/imgui.dir/build.make
 imgui/libimgui.a: imgui/CMakeFiles/imgui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libimgui.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libimgui.a"
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && $(CMAKE_COMMAND) -P CMakeFiles/imgui.dir/cmake_clean_target.cmake
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/imgui && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/imgui.dir/link.txt --verbose=$(VERBOSE)
 

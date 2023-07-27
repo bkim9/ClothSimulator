@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imGuIZMOquat.cpp" "imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o" "gcc" "imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o.d"
   "/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui.cpp" "imgui/CMakeFiles/imgui.dir/src/imgui.cpp.o" "gcc" "imgui/CMakeFiles/imgui.dir/src/imgui.cpp.o.d"
   "/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_demo.cpp" "imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.o" "gcc" "imgui/CMakeFiles/imgui.dir/src/imgui_demo.cpp.o.d"
   "/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/src/imgui_draw.cpp" "imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.o" "gcc" "imgui/CMakeFiles/imgui.dir/src/imgui_draw.cpp.o.d"

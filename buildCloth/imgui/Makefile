@@ -223,6 +223,30 @@ guitest.cpp.s:
 	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth && $(MAKE) $(MAKESILENT) -f imgui/CMakeFiles/testgui.dir/build.make imgui/CMakeFiles/testgui.dir/guitest.cpp.s
 .PHONY : guitest.cpp.s
 
+src/imGuIZMOquat.o: src/imGuIZMOquat.cpp.o
+.PHONY : src/imGuIZMOquat.o
+
+# target to build an object file
+src/imGuIZMOquat.cpp.o:
+	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth && $(MAKE) $(MAKESILENT) -f imgui/CMakeFiles/imgui.dir/build.make imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o
+.PHONY : src/imGuIZMOquat.cpp.o
+
+src/imGuIZMOquat.i: src/imGuIZMOquat.cpp.i
+.PHONY : src/imGuIZMOquat.i
+
+# target to preprocess a source file
+src/imGuIZMOquat.cpp.i:
+	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth && $(MAKE) $(MAKESILENT) -f imgui/CMakeFiles/imgui.dir/build.make imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.i
+.PHONY : src/imGuIZMOquat.cpp.i
+
+src/imGuIZMOquat.s: src/imGuIZMOquat.cpp.s
+.PHONY : src/imGuIZMOquat.s
+
+# target to generate assembly for a file
+src/imGuIZMOquat.cpp.s:
+	cd /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth && $(MAKE) $(MAKESILENT) -f imgui/CMakeFiles/imgui.dir/build.make imgui/CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.s
+.PHONY : src/imGuIZMOquat.cpp.s
+
 src/imgui.o: src/imgui.cpp.o
 .PHONY : src/imgui.o
 
@@ -409,6 +433,9 @@ help:
 	@echo "... guitest.o"
 	@echo "... guitest.i"
 	@echo "... guitest.s"
+	@echo "... src/imGuIZMOquat.o"
+	@echo "... src/imGuIZMOquat.i"
+	@echo "... src/imGuIZMOquat.s"
 	@echo "... src/imgui.o"
 	@echo "... src/imgui.i"
 	@echo "... src/imgui.s"
