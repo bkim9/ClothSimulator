@@ -1314,6 +1314,7 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Air.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Camera.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Cloth.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Floor.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Particle.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Shader.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Spring.h \
@@ -1732,10 +1733,6 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
 
 /opt/homebrew/include/glm/detail/type_float.hpp:
 
-/opt/homebrew/include/glm/ext/vector_bool4.hpp:
-
-/opt/homebrew/include/glm/detail/qualifier.hpp:
-
 /opt/homebrew/include/glm/mat3x2.hpp:
 
 /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/main.h:
@@ -1743,6 +1740,12 @@ CMakeFiles/Cloth.dir/main.cpp.o: /Users/naryungkim/Documents/GitHub/CSE169/Cloth
 /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Window.h:
 
 /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Shader.h:
+
+/opt/homebrew/include/glm/ext/vector_bool4.hpp:
+
+/opt/homebrew/include/glm/detail/qualifier.hpp:
+
+/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Floor.h:
 
 /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Cloth.h:
 

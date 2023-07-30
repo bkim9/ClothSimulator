@@ -8,6 +8,7 @@ bool Window::toggle = true;
 
 // Objects to render
 Cloth* Window::cloth;
+glm::vec3 Window::cloth_loc = glm::vec3(0);
 Air* Window::air;
 float Window::fluidDensity = 1.225f;
 float Window::dragCoefficient = 1.28f;
@@ -45,6 +46,7 @@ bool Window::initializeObjects() {
     d = 0.1f;
     k = 10.0f;
     damp = .001f;
+    cloth_loc = glm::vec3(0);
 
     // height: h     width: w
     //  -   0   1   2   3   w
@@ -200,6 +202,10 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
         air->density = fluidDensity;
         air->dragcoef= dragCoefficient;
 
+        // cloth
+        ImGui::SliderFloat("cloth.x", &cloth_loc.x, -6.f, 6.f);
+        ImGui::SliderFloat("cloth.y", &cloth_loc.y, -2.f,  6.f); // floorlevel
+        ImGui::SliderFloat("cloth.z", &cloth_loc.z, -6.f, 6.f);
 
         // reset
         if (ImGui::Button("Reset")) {
@@ -248,7 +254,7 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
     glClear(GL_COLOR_BUFFER_BIT);
 
 
-    cloth->Update(0, air);
+    cloth->Update(cloth_loc, air);
     cloth->Draw(Cam->GetViewProjectMtx(), Window::shaderProgram);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
@@ -294,7 +300,7 @@ void Window::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
             case GLFW_KEY_LEFT:
             case GLFW_KEY_U:
             case GLFW_KEY_D:
-                cloth->Update(key, air);
+                // cloth->Update(key, air);
                 break;
             case GLFW_KEY_F: // faster
                 air->wind.x++;

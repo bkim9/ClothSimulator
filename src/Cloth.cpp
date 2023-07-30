@@ -161,6 +161,8 @@ void Cloth::Load(int h, int w, float particleDistance, float stiffness, float da
             verticies[i][j]->degree = trianglemap[verticies[i][j]].size();
         }
     }
+    // location to 0
+    location = glm::vec3(0);
 }
 
 void Cloth::Draw(const glm::mat4 &viewProjMtx, GLuint shader) {
@@ -174,35 +176,40 @@ void Cloth::Draw(const glm::mat4 &viewProjMtx, GLuint shader) {
     }
 }
 
-void Cloth::Update(int movedirection, Air* air) {
-    glm::vec3 step(0);
-    float stepsize = particledistance;
-    switch ( movedirection ) {
-        case GLFW_KEY_UP:
-            step.z = stepsize;
-            break;
-        case GLFW_KEY_LEFT:
-            step.x = -stepsize;
-            break;
-        case GLFW_KEY_DOWN:
-            step.z = -stepsize;
-            break;
-        case GLFW_KEY_RIGHT:
-            step.x = stepsize;
-            break;
-        case GLFW_KEY_U:
-            step.y = stepsize;
-            break;
-        case GLFW_KEY_D:
-            step.y = -stepsize;
-            break;
-        default:
-            break;
+void Cloth::Move(glm::vec3& loc){
+    glm::vec3 displacement = loc-location;
+    for( int j = 0; j < width+1; j++ ) {
+        verticies[0][j]->Position += displacement;
     }
-    for( int j = 0; j < width+1 && glm::length(step) != 0; j++ ) {
-        verticies[0][j]->Position += step;
-    }
+    location = loc;
+}
 
+void Cloth::Update(glm::vec3& step, Air* air) {
+    float stepsize = particledistance;
+    // switch ( movedirection ) {
+    //     case GLFW_KEY_UP:
+    //         step.z = stepsize;
+    //         break;
+    //     case GLFW_KEY_LEFT:
+    //         step.x = -stepsize;
+    //         break;
+    //     case GLFW_KEY_DOWN:
+    //         step.z = -stepsize;
+    //         break;
+    //     case GLFW_KEY_RIGHT:
+    //         step.x = stepsize;
+    //         break;
+    //     case GLFW_KEY_U:
+    //         step.y = stepsize;
+    //         break;
+    //     case GLFW_KEY_D:
+    //         step.y = -stepsize;
+    //         break;
+    //     default:
+    //         break;
+    // }
+    // for( int i = 0; j < height+1 && glm::)
+    Move(step);
     // Evaluate all forces in current configuration at time tn and use these to compute all accelerations
         // gravity
         for (auto i: verticies) {

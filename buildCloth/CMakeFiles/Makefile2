@@ -231,9 +231,9 @@ imgui/CMakeFiles/imgui.dir/clean:
 # Target rules for target imgui/CMakeFiles/testgui.dir
 
 # All Build rule for target.
+imgui/CMakeFiles/testgui.dir/all: imgui/CMakeFiles/imgui.dir/all
 imgui/CMakeFiles/testgui.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 imgui/CMakeFiles/testgui.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
-imgui/CMakeFiles/testgui.dir/all: imgui/CMakeFiles/imgui.dir/all
 	$(MAKE) $(MAKESILENT) -f imgui/CMakeFiles/testgui.dir/build.make imgui/CMakeFiles/testgui.dir/depend
 	$(MAKE) $(MAKESILENT) -f imgui/CMakeFiles/testgui.dir/build.make imgui/CMakeFiles/testgui.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/buildCloth/CMakeFiles --progress-num=28,29 "Built target testgui"

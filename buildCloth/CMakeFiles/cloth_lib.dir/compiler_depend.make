@@ -1618,6 +1618,7 @@ CMakeFiles/cloth_lib.dir/src/Cloth.cpp.o: /Users/naryungkim/Documents/GitHub/CSE
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stdint.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Air.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Cloth.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Floor.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Particle.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Spring.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Triangle.h \
@@ -6644,6 +6645,7 @@ CMakeFiles/cloth_lib.dir/src/Window.cpp.o: /Users/naryungkim/Documents/GitHub/CS
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Air.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Camera.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Cloth.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Floor.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Particle.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Shader.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Spring.h \
@@ -7876,6 +7878,8 @@ CMakeFiles/cloth_lib.dir/src/Window.cpp.o: /Users/naryungkim/Documents/GitHub/CS
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/ATSUI.framework/Headers/ATSUnicode.h:
 
 /opt/homebrew/include/glm/ext/quaternion_common.inl:
+
+/Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Floor.h:
 
 /opt/homebrew/include/glm/ext/vector_bool4.hpp:
 

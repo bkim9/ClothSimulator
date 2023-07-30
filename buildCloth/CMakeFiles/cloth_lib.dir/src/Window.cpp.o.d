@@ -1002,10 +1002,11 @@ CMakeFiles/cloth_lib.dir/src/Window.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/u8path.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/iostream \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Cloth.h \
-  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Triangle.h \
-  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Particle.h \
-  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Air.h \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Spring.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Particle.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Floor.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Triangle.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/include/Air.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/map \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree \
   /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imgui_impl_glfw.h \
