@@ -1,12 +1,13 @@
 
-#include "Triangle.h"
 #include "Spring.h"
+#include "Floor.h"
 #include <map>
 class Cloth {
     private:
     int height;
     int width;
     float particledistance;
+    glm::vec3 location;
     public: 
 
     // height: h     width: w
@@ -36,5 +37,6 @@ class Cloth {
     void makeTriangle(Particle* p0, Particle* p1, Particle* p2);
     void Load(int h, int w, float paricleDistance, float stiffness, float dampness);
     void Draw(const glm::mat4& viewProjMtx, GLuint shader);
-    void Update(int movedirection, Air* air);
+    void Move(glm::vec3& loc);
+    void Update(glm::vec3& clothLoc, Air* air);
 };

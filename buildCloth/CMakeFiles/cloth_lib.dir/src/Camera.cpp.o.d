@@ -917,4 +917,12 @@ CMakeFiles/cloth_lib.dir/src/Camera.cpp.o: \
   /opt/homebrew/include/glm/gtx/../gtc/epsilon.inl \
   /opt/homebrew/include/glm/gtx/../gtc/../vector_relational.hpp \
   /opt/homebrew/include/glm/gtx/../gtc/../common.hpp \
-  /opt/homebrew/include/glm/gtx/compatibility.inl
+  /opt/homebrew/include/glm/gtx/compatibility.inl \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imGuIZMOquat.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/vGizmo.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/vgMath.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/vgConfig.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imgui.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imconfig.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imgui_internal.h \
+  /Users/naryungkim/Documents/GitHub/CSE169/ClothSimulator/imgui/include/imstb_textedit.h

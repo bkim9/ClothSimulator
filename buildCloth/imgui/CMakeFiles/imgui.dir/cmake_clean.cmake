@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o"
+  "CMakeFiles/imgui.dir/src/imGuIZMOquat.cpp.o.d"
   "CMakeFiles/imgui.dir/src/imgui.cpp.o"
   "CMakeFiles/imgui.dir/src/imgui.cpp.o.d"
   "CMakeFiles/imgui.dir/src/imgui_demo.cpp.o"
