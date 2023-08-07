@@ -191,10 +191,12 @@ void Cloth::Update(glm::vec3& step, Air* air) {
     // Evaluate all forces in current configuration at time tn and use these to compute all accelerations
         // gravity
         for (auto i: verticies) {
-            for (auto j: i) {
+        for (auto j: i) {
+            if (j->Position.y > floor->height+.001f) {
                 glm::vec3 gravity(0, j->Mass * -9.8f, 0);
                 j->ApplyForce(gravity);
             }
+        }
         }
         // Spring
         for (auto i: springmap) {
@@ -233,14 +235,26 @@ void Cloth::Update(glm::vec3& step, Air* air) {
         }
         it.first->Normal = glm::normalize(subnormal);// / it.second.size();
     }
-
+    float threshold = .002f;
+    float bound = floor->height + threshold;
     // collision handling with y = -2 plane
-    float collisionconstant = .2;
+    float collisionconstant = .2f;
+
+    int tolerance = 0;
     for(auto i : verticies){
     for( auto j : i) {
-        if( j->Position.y < -2 && j->Velocity.y < 0){
-            j->Velocity.y = -j->Velocity.y * collisionconstant;
-            if( j->Position.y < -2.2 ) j->Position.y = -2.2 + .001 * j->RandomVector().y;
+        //     ====== floor->height ( bound )
+        //       o
+        //       |      
+        //       v      ^
+        //     ______
+        tolerance = 0;
+        if( j->Position.y < bound && j->Velocity.y < 0){
+            j->Velocity.y = -j->Velocity.y * collisionconstant*pow(.001f,tolerance++);
+            if( j->Position.y < bound ) {
+                j->Position.y = bound;// * fabs(j->RandomVector().y);
+                j->Velocity = glm::vec3(0);
+            }
         } 
     }
     }

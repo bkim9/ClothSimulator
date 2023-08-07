@@ -61,6 +61,7 @@ bool Window::initializeObjects() {
     cloth->Load(h,w,d,k,damp);
 
     floor->Init(floor_col);
+    cloth->floor = floor;
     glm::vec3 wind(0.0f,0.0f,0.0f);
     air = new Air(fluidDensity,dragCoefficient,wind);
 

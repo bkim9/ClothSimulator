@@ -9,6 +9,7 @@ class Cloth {
     float particledistance;
     glm::vec3 location;
     
+    
     public: 
 
     // height: h     width: w
@@ -36,6 +37,7 @@ class Cloth {
         std::map<Particle*, Spring*> > springmap;
 
     glm::vec3 color;
+    Floor* floor;
     void makeTriangle(Particle* p0, Particle* p1, Particle* p2);
     void Load(int h, int w, float paricleDistance, float stiffness, float dampness);
     void Draw(const glm::mat4& viewProjMtx, GLuint shader);
