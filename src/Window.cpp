@@ -9,6 +9,8 @@ bool Window::toggle = true;
 // Objects to render
 Cloth* Window::cloth;
 glm::vec3 Window::cloth_loc = glm::vec3(0);
+Floor* Window::floor;
+glm::vec3 Window::floor_col;
 Air* Window::air;
 float Window::fluidDensity = 1.225f;
 float Window::dragCoefficient = 1.28f;
@@ -39,6 +41,8 @@ bool Window::initializeProgram() {
 bool Window::initializeObjects() {
 
     cloth  = new Cloth;
+    floor  = new Floor;
+
     int h, w;
     float d, k, damp;
     h = 10;
@@ -47,6 +51,7 @@ bool Window::initializeObjects() {
     k = 10.0f;
     damp = .001f;
     cloth_loc = glm::vec3(0);
+    floor_col = glm::vec3(0);
 
     // height: h     width: w
     //  -   0   1   2   3   w
@@ -55,6 +60,7 @@ bool Window::initializeObjects() {
     //  h   o   o   o   o   o
     cloth->Load(h,w,d,k,damp);
 
+    floor->Init(floor_col);
     glm::vec3 wind(0.0f,0.0f,0.0f);
     air = new Air(fluidDensity,dragCoefficient,wind);
 
@@ -64,7 +70,7 @@ bool Window::initializeObjects() {
 void Window::cleanUp() {
     // Deallcoate the objects.
     delete cloth;
-
+    delete floor;
     // Delete the shader program.
     glDeleteProgram(shaderProgram);
 
@@ -162,6 +168,7 @@ void Window::idleCallback() {
     // Perform any updates as necessary.
     Cam->Update();
     cloth->Draw(glm::mat4(1.0f),3);
+    floor->Draw(glm::mat4(1.0f),3);
 }
 
 void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
@@ -178,6 +185,8 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
 
     static float clear_color[4] = { .839f,.961f,.784f, 1.0f };
     static float cloth_color[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    static float floor_color[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+        static float floor_height = 0.0f;
     ImGui::Begin("color and air");
     {
         static float windspeed = 0.0f;
@@ -213,6 +222,10 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
         ImGui::ColorEdit3("cloth color", cloth_color);
         cloth->color = glm::vec3(cloth_color[0], cloth_color[1], cloth_color[2]);
 
+        // floor
+        ImGui::SliderFloat("floor height", &floor_height, -2.f,  6.f); // floorlevel
+        ImGui::ColorEdit3("floor color", floor_color);
+        floor->floorColor = glm::vec3(floor_color[0], floor_color[1], floor_color[2]);
 
         // reset
         if (ImGui::Button("Reset")) {
@@ -258,7 +271,9 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
 
 
     cloth->Update(cloth_loc, air);
+    floor->Update(floor_height);
     cloth->Draw(Cam->GetViewProjectMtx(), Window::shaderProgram);
+    floor->Draw(Cam->GetViewProjectMtx(), Window::shaderProgram);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     // Swap buffers.

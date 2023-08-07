@@ -169,11 +169,11 @@ void Cloth::Load(int h, int w, float particleDistance, float stiffness, float da
 void Cloth::Draw(const glm::mat4 &viewProjMtx, GLuint shader) {
     // trianglemap [i]->draw(viewProjMtx, shader);
     for (auto i : trianglemap) {
-        for ( auto j : i.second) {
-            for( auto k: j.second) {
-                k.second->draw(viewProjMtx, shader);
-            }
-        }
+    for ( auto j : i.second) {
+    for( auto k: j.second) {
+        k.second->draw(viewProjMtx, shader);
+    }
+    }
     }
 }
 
@@ -215,9 +215,9 @@ void Cloth::Update(glm::vec3& step, Air* air) {
     // Integrate accelerations over some finite time step delta t to advance everything to new positions( and velocities ) at new time tn+1
     float deltatime = 0.01f;
     for( int i = 1; i < height+1; i++ ) {
-        for( int j = 0; j<width+1; j++ ) {
-            verticies[i][j]->Integrate(deltatime);
-        }
+    for( int j = 0; j<width+1; j++ ) {
+        verticies[i][j]->Integrate(deltatime);
+    }
     }
 
     // Update normals
