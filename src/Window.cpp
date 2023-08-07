@@ -177,7 +177,7 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
     ImGui::NewFrame();
 
     static float clear_color[4] = { .839f,.961f,.784f, 1.0f };
-
+    static float cloth_color[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
     ImGui::Begin("color and air");
     {
         static float windspeed = 0.0f;
@@ -189,6 +189,7 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
         int show = 1;
         ImGui::Text(u8"Hello, world! ");
 
+        // clear color
         ImGui::ColorEdit3("clear color", clear_color);
 
         // wind
@@ -207,6 +208,11 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
         ImGui::SliderFloat("cloth.x", &cloth_loc.x, -6.f, 6.f);
         ImGui::SliderFloat("cloth.y", &cloth_loc.y, -2.f,  6.f); // floorlevel
         ImGui::SliderFloat("cloth.z", &cloth_loc.z, -6.f, 6.f);
+        Cam->target = cloth_loc;
+        
+        ImGui::ColorEdit3("cloth color", cloth_color);
+        cloth->color = glm::vec3(cloth_color[0], cloth_color[1], cloth_color[2]);
+
 
         // reset
         if (ImGui::Button("Reset")) {

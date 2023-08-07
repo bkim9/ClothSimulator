@@ -152,6 +152,7 @@ void Cloth::Load(int h, int w, float particleDistance, float stiffness, float da
         for( auto jt : it.second) {
             for( auto kt : jt.second) {
                 kt.second->predraw();
+                kt.second->color = color;
             }
         }
     }
@@ -185,30 +186,7 @@ void Cloth::Move(glm::vec3& loc){
 }
 
 void Cloth::Update(glm::vec3& step, Air* air) {
-    float stepsize = particledistance;
-    // switch ( movedirection ) {
-    //     case GLFW_KEY_UP:
-    //         step.z = stepsize;
-    //         break;
-    //     case GLFW_KEY_LEFT:
-    //         step.x = -stepsize;
-    //         break;
-    //     case GLFW_KEY_DOWN:
-    //         step.z = -stepsize;
-    //         break;
-    //     case GLFW_KEY_RIGHT:
-    //         step.x = stepsize;
-    //         break;
-    //     case GLFW_KEY_U:
-    //         step.y = stepsize;
-    //         break;
-    //     case GLFW_KEY_D:
-    //         step.y = -stepsize;
-    //         break;
-    //     default:
-    //         break;
-    // }
-    // for( int i = 0; j < height+1 && glm::)
+    // float stepsize = particledistance;
     Move(step);
     // Evaluate all forces in current configuration at time tn and use these to compute all accelerations
         // gravity
@@ -229,6 +207,7 @@ void Cloth::Update(glm::vec3& step, Air* air) {
             for(auto jt: it.second) {
                 for(auto kt: jt.second) {
                     kt.second->Aero(air);
+                    kt.second->color = color;
                 }
             }
         }
@@ -258,11 +237,11 @@ void Cloth::Update(glm::vec3& step, Air* air) {
     // collision handling with y = -2 plane
     float collisionconstant = .2;
     for(auto i : verticies){
-        for( auto j : i) {
-            if( j->Position.y < -2 && j->Velocity.y < 0){
-                j->Velocity.y = -j->Velocity.y * collisionconstant;
-                if( j->Position.y < -2.2 ) j->Position.y = -2.2 + .001 * j->RandomVector().y;
-            } 
-        }
+    for( auto j : i) {
+        if( j->Position.y < -2 && j->Velocity.y < 0){
+            j->Velocity.y = -j->Velocity.y * collisionconstant;
+            if( j->Position.y < -2.2 ) j->Position.y = -2.2 + .001 * j->RandomVector().y;
+        } 
+    }
     }
 }

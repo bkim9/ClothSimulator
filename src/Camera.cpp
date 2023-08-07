@@ -15,6 +15,9 @@ void Camera::Update() {
             glm::eulerAngleX(glm::radians(-Incline)) * 
             world;
 
+    world[3][0] += target.x;
+    world[3][1] += target.y;
+    world[3][2] += target.z;
     
     // Compute view matrix (inverse of world matrix)
     glm::mat4 view = glm::inverse(world);

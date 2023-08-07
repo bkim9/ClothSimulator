@@ -19,6 +19,13 @@ out vec4 fragColor;
 
 void main()
 {
+
+//[worldcoord]  eye                      light           
+//               ^    ^       ^           ^    
+//                V   N   H // (V+L)   L
+//                 \  |  / ---------- /
+//                   obj  
+
 	// Compute irradiance (sum of ambient & direct lighting)
 	vec3 irradiance = AmbientColor + LightColor0 * max(0, dot(LightDirection0, fragNormal))+ LightColor1 * max(0, dot(LightDirection1, fragNormal));
 

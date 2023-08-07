@@ -16,7 +16,7 @@
 class Camera {
 public:
     Camera();
-
+    glm::vec3 target;
     void Update();
     void Reset();
 
@@ -29,7 +29,6 @@ public:
                                 tempAz:
                                 tempAz+glm::pi<float>()));
         SetIncline(glm::degrees(-glm::atan(dir.y/glm::sqrt(dir.z*dir.z + dir.x*dir.x))));
-        std::cout << "Azimuth: " << Azimuth << ", Incline: "<< Incline << std::endl;
     }
     void SetAzimuth(float a) { Azimuth = a; }
     void SetIncline(float i) { Incline = i; }
@@ -50,7 +49,7 @@ private:
     float Distance;  // Distance eye to origin (meters)
     float Azimuth;   // Rotation eye around Y axis (degrees)
     float Incline;   // Angle of eye over the XZ plane (degrees)
-    glm::vec3 target;
+    
     // Computed data
     glm::mat4 ViewProjectMtx;
 };
