@@ -182,6 +182,7 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
     {
         static float windspeed = 0.0f;
         static glm::vec3 windDir(1,0,0);
+        static glm::vec3 camDir(0,0,-1);
         static vec4 dir;
         quat qRot = quat(1.f, 0.f, 0.f, 0.f);
 
@@ -225,20 +226,16 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
 
     ImGui::Begin("Camera Control");
     {
-        // camera zoom in out
-        if (ImGui::Button("+"))  Cam->SetDistance(Cam->GetDistance() * .9f) ;
-        if (ImGui::Button("-")) Cam->SetDistance(Cam->GetDistance() / .9f) ;
-
-
-        static quat qt = quat(1.f, 0.f, 0.f, 0.f);//Cam->GetRotation();
-        static vec3 pos = vec3(Cam->GetDistance(),0,0);// Cam->GetPosition(); ******
-        if(ImGui::gizmo3D("##gizmo1", pos, qt,100, imguiGizmo::mode3Axes|imguiGizmo::cubeAtOrigin)) {  
-            // SetRotation(qt); SetPosition(pos); 
-        }
-        // or explicitly
-        // static quat q(1.f, 0.f, 0.f, 0.f);
-        // static vec3 pos(0.f);
-        // ImGui::gizmo3D("##Dir1", pos, q, 100, imguiGizmo::mode3Axes|guiGizmo::cubeAtOrigin);
+        static float camDistance = 10.f;
+        static glm::vec3 camDir(0,0,-1);
+        ImGui::SliderFloat("camera distance", &camDistance, .1f, 17.f);
+        Cam->SetDistance(camDistance);
+        vec3 camDirGizmo(camDir.x,camDir.y,camDir.z);
+        ImGui::gizmo3D("##camera direction", camDirGizmo, 200, imguiGizmo::modeDirection);
+        ImGui::Text("camera direction: %.3f, %.3f, %.3f", camDirGizmo.x, camDirGizmo.y, camDirGizmo.z);
+        camDir = glm::normalize(glm::vec3( camDirGizmo.x, camDirGizmo.y, camDirGizmo.z));
+        Cam->SetDirection(camDir);
+        Cam->Update();
 
     // Default size: ImGui::GetFrameHeightWithSpacing()*4
     // Default mode: guiGizmo::mode3Axes|guiGizmo::cubeAtOrigin -> 3 Axes with cube @ origin
@@ -315,32 +312,32 @@ void Window::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
 }
 
 void Window::mouse_callback(GLFWwindow* window, int button, int action, int mods) {
-    if (button == GLFW_MOUSE_BUTTON_LEFT) {
-        LeftDown = (action == GLFW_PRESS);
-    }
-    if (button == GLFW_MOUSE_BUTTON_RIGHT) {
-        RightDown = (action == GLFW_PRESS);
-    }
+    // if (button == GLFW_MOUSE_BUTTON_LEFT) {
+    //     LeftDown = (action == GLFW_PRESS);
+    // }
+    // if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+    //     RightDown = (action == GLFW_PRESS);
+    // }
 }
 
 void Window::cursor_callback(GLFWwindow* window, double currX, double currY) {
-    int maxDelta = 100;
-    int dx = glm::clamp((int)currX - MouseX, -maxDelta, maxDelta);
-    int dy = glm::clamp(-((int)currY - MouseY), -maxDelta, maxDelta);
+    // int maxDelta = 100;
+    // int dx = glm::clamp((int)currX - MouseX, -maxDelta, maxDelta);
+    // int dy = glm::clamp(-((int)currY - MouseY), -maxDelta, maxDelta);
 
-    MouseX = (int)currX;
-    MouseY = (int)currY;
+    // MouseX = (int)currX;
+    // MouseY = (int)currY;
 
-    // Move camera
-    // NOTE: this should really be part of Camera::Update()
-    if (LeftDown) {
-        const float rate = 1.0f;
-        Cam->SetAzimuth(Cam->GetAzimuth() + dx * rate);
-        Cam->SetIncline(glm::clamp(Cam->GetIncline() - dy * rate, -90.0f, 90.0f));
-    }
-    if (RightDown) {
-        const float rate = 0.005f;
-        float dist = glm::clamp(Cam->GetDistance() * (1.0f - dx * rate), 0.01f, 1000.0f);
-        Cam->SetDistance(dist);
-    }
+    // // Move camera
+    // // NOTE: this should really be part of Camera::Update()
+    // if (LeftDown) {
+    //     const float rate = 1.0f;
+    //     Cam->SetAzimuth(Cam->GetAzimuth() + dx * rate);
+    //     Cam->SetIncline(glm::clamp(Cam->GetIncline() - dy * rate, -90.0f, 90.0f));
+    // }
+    // if (RightDown) {
+    //     const float rate = 0.005f;
+    //     float dist = glm::clamp(Cam->GetDistance() * (1.0f - dx * rate), 0.01f, 1000.0f);
+    //     Cam->SetDistance(dist);
+    // }
 }

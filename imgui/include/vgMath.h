@@ -255,6 +255,8 @@ public:
 
     explicit operator const T *() const { return &x; }
     explicit operator       T *()       { return &x; }
+
+    Quat conj() const { return Quat(w, -x, -y, -z); }
 };
 // Mat3
 //////////////////////////
@@ -330,6 +332,7 @@ public:
          T v1x, T v1y, T v1z, T v1w,
          T v2x, T v2y, T v2z, T v2w,
          T v3x, T v3y, T v3z, T v3w) : v {VEC4_T(v0x, v0y, v0z, v0w), VEC4_T(v1x, v1y, v1z, v1w), VEC4_T(v2x, v2y, v2z, v2w), VEC4_T(v3x, v3y, v3z, v3w) } {}
+
 
     const VEC4_T& operator[](int i) const { return v[i]; }
           VEC4_T& operator[](int i)       { return v[i]; }

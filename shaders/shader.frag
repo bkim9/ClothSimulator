@@ -9,7 +9,7 @@ in vec3 fragNormal;
 uniform vec3 AmbientColor = vec3(0.2);
 uniform vec3 LightDirection0 = normalize(vec3(1, 0, 0));
 uniform vec3 LightDirection1 = normalize(vec3(-1, 0, 0));
-uniform vec3 LightColor0 = vec3(1,0,0);
+uniform vec3 LightColor0 = vec3(3,2,3);
 uniform vec3 LightColor1 = vec3(1,1,0);
 uniform vec3 DiffuseColor;	// passed in from c++ side NOTE: you can also set the value here and then remove 
 							// color from the c++ side

@@ -7,6 +7,7 @@
 #include "core.h"
 #include "glm/gtx/euler_angles.hpp"
 #include "imGuIZMOquat.h"
+#include <iostream>
 
 // The Camera class provides a simple means to controlling the 3D camera. It could
 // be extended to support more interactive controls. Ultimately. the camera sets the
@@ -22,17 +23,19 @@ public:
     // Access functions
     void SetAspect(float a) { Aspect = a; }
     void SetDistance(float d) { Distance = d; }
+    void SetDirection(glm::vec3 dir) {
+        float tempAz = glm::atan(-dir.x/dir.z);
+        SetAzimuth(glm::degrees(dir.z <0 ?
+                                tempAz:
+                                tempAz+glm::pi<float>()));
+        SetIncline(glm::degrees(-glm::atan(dir.y/glm::sqrt(dir.z*dir.z + dir.x*dir.x))));
+        std::cout << "Azimuth: " << Azimuth << ", Incline: "<< Incline << std::endl;
+    }
     void SetAzimuth(float a) { Azimuth = a; }
     void SetIncline(float i) { Incline = i; }
-    quat SetRotation(){
-        ViewProjectMtx;
-    }
     float GetDistance() { return Distance; }
     float GetAzimuth() { return Azimuth; }
     float GetIncline() { return Incline; }
-    quat GetRotation(){
-        ViewProjectMtx;
-    }
 
     const glm::mat4 &GetViewProjectMtx() { return ViewProjectMtx; }
 
@@ -44,10 +47,10 @@ private:
     float FarClip;   // Far clipping plane distance
 
     // Polar controls
-    float Distance;  // Distance of the camera eye position to the origin (meters)
-    float Azimuth;   // Rotation of the camera eye position around the Y axis (degrees)
-    float Incline;   // Angle of the camera eye position over the XZ plane (degrees)
-
+    float Distance;  // Distance eye to origin (meters)
+    float Azimuth;   // Rotation eye around Y axis (degrees)
+    float Incline;   // Angle of eye over the XZ plane (degrees)
+    glm::vec3 target;
     // Computed data
     glm::mat4 ViewProjectMtx;
 };
