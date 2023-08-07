@@ -9,6 +9,8 @@ bool Window::toggle = true;
 // Objects to render
 Cloth* Window::cloth;
 glm::vec3 Window::cloth_loc = glm::vec3(0);
+Floor* Window::floor;
+glm::vec3 Window::floor_col;
 Air* Window::air;
 float Window::fluidDensity = 1.225f;
 float Window::dragCoefficient = 1.28f;
@@ -39,6 +41,8 @@ bool Window::initializeProgram() {
 bool Window::initializeObjects() {
 
     cloth  = new Cloth;
+    floor  = new Floor;
+
     int h, w;
     float d, k, damp;
     h = 10;
@@ -47,6 +51,7 @@ bool Window::initializeObjects() {
     k = 10.0f;
     damp = .001f;
     cloth_loc = glm::vec3(0);
+    floor_col = glm::vec3(0);
 
     // height: h     width: w
     //  -   0   1   2   3   w
@@ -55,6 +60,8 @@ bool Window::initializeObjects() {
     //  h   o   o   o   o   o
     cloth->Load(h,w,d,k,damp);
 
+    floor->Init(floor_col);
+    cloth->floor = floor;
     glm::vec3 wind(0.0f,0.0f,0.0f);
     air = new Air(fluidDensity,dragCoefficient,wind);
 
@@ -64,7 +71,7 @@ bool Window::initializeObjects() {
 void Window::cleanUp() {
     // Deallcoate the objects.
     delete cloth;
-
+    delete floor;
     // Delete the shader program.
     glDeleteProgram(shaderProgram);
 
@@ -162,6 +169,7 @@ void Window::idleCallback() {
     // Perform any updates as necessary.
     Cam->Update();
     cloth->Draw(glm::mat4(1.0f),3);
+    floor->Draw(glm::mat4(1.0f),3);
 }
 
 void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
@@ -177,17 +185,21 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
     ImGui::NewFrame();
 
     static float clear_color[4] = { .839f,.961f,.784f, 1.0f };
-
+    static float cloth_color[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    static float floor_color[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+        static float floor_height = 0.0f;
     ImGui::Begin("color and air");
     {
         static float windspeed = 0.0f;
         static glm::vec3 windDir(1,0,0);
+        static glm::vec3 camDir(0,0,-1);
         static vec4 dir;
         quat qRot = quat(1.f, 0.f, 0.f, 0.f);
 
         int show = 1;
         ImGui::Text(u8"Hello, world! ");
 
+        // clear color
         ImGui::ColorEdit3("clear color", clear_color);
 
         // wind
@@ -206,6 +218,15 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
         ImGui::SliderFloat("cloth.x", &cloth_loc.x, -6.f, 6.f);
         ImGui::SliderFloat("cloth.y", &cloth_loc.y, -2.f,  6.f); // floorlevel
         ImGui::SliderFloat("cloth.z", &cloth_loc.z, -6.f, 6.f);
+        Cam->target = cloth_loc;
+        
+        ImGui::ColorEdit3("cloth color", cloth_color);
+        cloth->color = glm::vec3(cloth_color[0], cloth_color[1], cloth_color[2]);
+
+        // floor
+        ImGui::SliderFloat("floor height", &floor_height, -2.f,  6.f); // floorlevel
+        ImGui::ColorEdit3("floor color", floor_color);
+        floor->floorColor = glm::vec3(floor_color[0], floor_color[1], floor_color[2]);
 
         // reset
         if (ImGui::Button("Reset")) {
@@ -225,20 +246,16 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
 
     ImGui::Begin("Camera Control");
     {
-        // camera zoom in out
-        if (ImGui::Button("+"))  Cam->SetDistance(Cam->GetDistance() * .9f) ;
-        if (ImGui::Button("-")) Cam->SetDistance(Cam->GetDistance() / .9f) ;
-
-
-        static quat qt = quat(1.f, 0.f, 0.f, 0.f);//Cam->GetRotation();
-        static vec3 pos = vec3(Cam->GetDistance(),0,0);// Cam->GetPosition(); ******
-        if(ImGui::gizmo3D("##gizmo1", pos, qt,100, imguiGizmo::mode3Axes|imguiGizmo::cubeAtOrigin)) {  
-            // SetRotation(qt); SetPosition(pos); 
-        }
-        // or explicitly
-        // static quat q(1.f, 0.f, 0.f, 0.f);
-        // static vec3 pos(0.f);
-        // ImGui::gizmo3D("##Dir1", pos, q, 100, imguiGizmo::mode3Axes|guiGizmo::cubeAtOrigin);
+        static float camDistance = 10.f;
+        static glm::vec3 camDir(0,0,-1);
+        ImGui::SliderFloat("camera distance", &camDistance, .1f, 17.f);
+        Cam->SetDistance(camDistance);
+        vec3 camDirGizmo(camDir.x,camDir.y,camDir.z);
+        ImGui::gizmo3D("##camera direction", camDirGizmo, 200, imguiGizmo::modeDirection);
+        ImGui::Text("camera direction: %.3f, %.3f, %.3f", camDirGizmo.x, camDirGizmo.y, camDirGizmo.z);
+        camDir = glm::normalize(glm::vec3( camDirGizmo.x, camDirGizmo.y, camDirGizmo.z));
+        Cam->SetDirection(camDir);
+        Cam->Update();
 
     // Default size: ImGui::GetFrameHeightWithSpacing()*4
     // Default mode: guiGizmo::mode3Axes|guiGizmo::cubeAtOrigin -> 3 Axes with cube @ origin
@@ -255,7 +272,9 @@ void Window::displayCallback(GLFWwindow* window,int argc, char* argv[]) {
 
 
     cloth->Update(cloth_loc, air);
+    floor->Update(floor_height);
     cloth->Draw(Cam->GetViewProjectMtx(), Window::shaderProgram);
+    floor->Draw(Cam->GetViewProjectMtx(), Window::shaderProgram);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     // Swap buffers.
@@ -315,32 +334,32 @@ void Window::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
 }
 
 void Window::mouse_callback(GLFWwindow* window, int button, int action, int mods) {
-    if (button == GLFW_MOUSE_BUTTON_LEFT) {
-        LeftDown = (action == GLFW_PRESS);
-    }
-    if (button == GLFW_MOUSE_BUTTON_RIGHT) {
-        RightDown = (action == GLFW_PRESS);
-    }
+    // if (button == GLFW_MOUSE_BUTTON_LEFT) {
+    //     LeftDown = (action == GLFW_PRESS);
+    // }
+    // if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+    //     RightDown = (action == GLFW_PRESS);
+    // }
 }
 
 void Window::cursor_callback(GLFWwindow* window, double currX, double currY) {
-    int maxDelta = 100;
-    int dx = glm::clamp((int)currX - MouseX, -maxDelta, maxDelta);
-    int dy = glm::clamp(-((int)currY - MouseY), -maxDelta, maxDelta);
+    // int maxDelta = 100;
+    // int dx = glm::clamp((int)currX - MouseX, -maxDelta, maxDelta);
+    // int dy = glm::clamp(-((int)currY - MouseY), -maxDelta, maxDelta);
 
-    MouseX = (int)currX;
-    MouseY = (int)currY;
+    // MouseX = (int)currX;
+    // MouseY = (int)currY;
 
-    // Move camera
-    // NOTE: this should really be part of Camera::Update()
-    if (LeftDown) {
-        const float rate = 1.0f;
-        Cam->SetAzimuth(Cam->GetAzimuth() + dx * rate);
-        Cam->SetIncline(glm::clamp(Cam->GetIncline() - dy * rate, -90.0f, 90.0f));
-    }
-    if (RightDown) {
-        const float rate = 0.005f;
-        float dist = glm::clamp(Cam->GetDistance() * (1.0f - dx * rate), 0.01f, 1000.0f);
-        Cam->SetDistance(dist);
-    }
+    // // Move camera
+    // // NOTE: this should really be part of Camera::Update()
+    // if (LeftDown) {
+    //     const float rate = 1.0f;
+    //     Cam->SetAzimuth(Cam->GetAzimuth() + dx * rate);
+    //     Cam->SetIncline(glm::clamp(Cam->GetIncline() - dy * rate, -90.0f, 90.0f));
+    // }
+    // if (RightDown) {
+    //     const float rate = 0.005f;
+    //     float dist = glm::clamp(Cam->GetDistance() * (1.0f - dx * rate), 0.01f, 1000.0f);
+    //     Cam->SetDistance(dist);
+    // }
 }

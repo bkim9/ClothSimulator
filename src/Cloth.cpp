@@ -152,6 +152,7 @@ void Cloth::Load(int h, int w, float particleDistance, float stiffness, float da
         for( auto jt : it.second) {
             for( auto kt : jt.second) {
                 kt.second->predraw();
+                kt.second->color = color;
             }
         }
     }
@@ -168,11 +169,11 @@ void Cloth::Load(int h, int w, float particleDistance, float stiffness, float da
 void Cloth::Draw(const glm::mat4 &viewProjMtx, GLuint shader) {
     // trianglemap [i]->draw(viewProjMtx, shader);
     for (auto i : trianglemap) {
-        for ( auto j : i.second) {
-            for( auto k: j.second) {
-                k.second->draw(viewProjMtx, shader);
-            }
-        }
+    for ( auto j : i.second) {
+    for( auto k: j.second) {
+        k.second->draw(viewProjMtx, shader);
+    }
+    }
     }
 }
 
@@ -185,38 +186,17 @@ void Cloth::Move(glm::vec3& loc){
 }
 
 void Cloth::Update(glm::vec3& step, Air* air) {
-    float stepsize = particledistance;
-    // switch ( movedirection ) {
-    //     case GLFW_KEY_UP:
-    //         step.z = stepsize;
-    //         break;
-    //     case GLFW_KEY_LEFT:
-    //         step.x = -stepsize;
-    //         break;
-    //     case GLFW_KEY_DOWN:
-    //         step.z = -stepsize;
-    //         break;
-    //     case GLFW_KEY_RIGHT:
-    //         step.x = stepsize;
-    //         break;
-    //     case GLFW_KEY_U:
-    //         step.y = stepsize;
-    //         break;
-    //     case GLFW_KEY_D:
-    //         step.y = -stepsize;
-    //         break;
-    //     default:
-    //         break;
-    // }
-    // for( int i = 0; j < height+1 && glm::)
+    // float stepsize = particledistance;
     Move(step);
     // Evaluate all forces in current configuration at time tn and use these to compute all accelerations
         // gravity
         for (auto i: verticies) {
-            for (auto j: i) {
+        for (auto j: i) {
+            if (j->Position.y > floor->height+.001f) {
                 glm::vec3 gravity(0, j->Mass * -9.8f, 0);
                 j->ApplyForce(gravity);
             }
+        }
         }
         // Spring
         for (auto i: springmap) {
@@ -229,6 +209,7 @@ void Cloth::Update(glm::vec3& step, Air* air) {
             for(auto jt: it.second) {
                 for(auto kt: jt.second) {
                     kt.second->Aero(air);
+                    kt.second->color = color;
                 }
             }
         }
@@ -236,9 +217,9 @@ void Cloth::Update(glm::vec3& step, Air* air) {
     // Integrate accelerations over some finite time step delta t to advance everything to new positions( and velocities ) at new time tn+1
     float deltatime = 0.01f;
     for( int i = 1; i < height+1; i++ ) {
-        for( int j = 0; j<width+1; j++ ) {
-            verticies[i][j]->Integrate(deltatime);
-        }
+    for( int j = 0; j<width+1; j++ ) {
+        verticies[i][j]->Integrate(deltatime);
+    }
     }
 
     // Update normals
@@ -254,15 +235,27 @@ void Cloth::Update(glm::vec3& step, Air* air) {
         }
         it.first->Normal = glm::normalize(subnormal);// / it.second.size();
     }
-
+    float threshold = .002f;
+    float bound = floor->height + threshold;
     // collision handling with y = -2 plane
-    float collisionconstant = .2;
+    float collisionconstant = .2f;
+
+    int tolerance = 0;
     for(auto i : verticies){
-        for( auto j : i) {
-            if( j->Position.y < -2 && j->Velocity.y < 0){
-                j->Velocity.y = -j->Velocity.y * collisionconstant;
-                if( j->Position.y < -2.2 ) j->Position.y = -2.2 + .001 * j->RandomVector().y;
-            } 
-        }
+    for( auto j : i) {
+        //     ====== floor->height ( bound )
+        //       o
+        //       |      
+        //       v      ^
+        //     ______
+        tolerance = 0;
+        if( j->Position.y < bound && j->Velocity.y < 0){
+            j->Velocity.y = -j->Velocity.y * collisionconstant*pow(.001f,tolerance++);
+            if( j->Position.y < bound ) {
+                j->Position.y = bound;// * fabs(j->RandomVector().y);
+                j->Velocity = glm::vec3(0);
+            }
+        } 
+    }
     }
 }

@@ -24,6 +24,8 @@ public:
     static Cloth* cloth;
     static glm::vec3 cloth_loc;
 
+    static Floor* floor;
+    static glm::vec3 floor_col;
     // Shader Program
     static GLuint shaderProgram;
 

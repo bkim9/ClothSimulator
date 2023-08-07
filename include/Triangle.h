@@ -11,13 +11,14 @@ class Triangle {
         std::vector<glm::vec3> normals;
         std::vector<unsigned int> indices;
         glm::mat4 model;
-        glm::vec3 color;
+        
     public:
         Triangle(Particle* particle0, Particle* particle1, Particle* particle2);
         ~Triangle();
         std::vector<Particle*> parts;
         glm::vec3 normal;
         float area;
+        glm::vec3 color;
         void predraw();
         void getN();
         void draw(const glm::mat4& viewProjMtx, GLuint shader);

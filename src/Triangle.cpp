@@ -22,7 +22,7 @@ void Triangle::predraw(){
 
 
     // The color of the triangle
-    color = glm::vec3(.2f, 0.5f, 0.5f);
+    // color = glm::vec3(.2f, 0.5f, 0.5f);
 
     // Generate a vertex array (VAO) and two vertex buffer objects (VBO).
     glGenVertexArrays(1, &VAO);
